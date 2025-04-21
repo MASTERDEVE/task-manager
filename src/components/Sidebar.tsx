@@ -269,7 +269,7 @@ export const ProfileSidebar = () => {
 
         <StyledDivider />
 
-        <MenuLink to="https://github.com/maciekt07/TodoApp">
+        <MenuLink to="https://https://github.com/MASTERDEVE/task-manager">
           <StyledMenuItem translate="no">
             <GitHub /> &nbsp; Github{" "}
             {stars && (
