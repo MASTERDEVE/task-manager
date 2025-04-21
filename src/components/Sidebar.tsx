@@ -1,4 +1,4 @@
-import { keyframes, useTheme } from "@emotion/react";
+import { keyframes } from "@emotion/react";
 import styled from "@emotion/styled";
 import {
   AddRounded,
@@ -8,7 +8,6 @@ import {
   DeleteForeverRounded,
   DownloadDoneRounded,
   Favorite,
- 
   FiberManualRecord,
   GetAppRounded,
   GitHub,
@@ -39,7 +38,7 @@ import { CustomDialogTitle, LogoutDialog, SettingsDialog } from ".";
 import logo from "../assets/logo256.png";
 import { defaultUser } from "../constants/defaultUser";
 import { UserContext } from "../contexts/UserContext";
-import { fetchBMCInfo } from "../services/bmcApi";
+// import { fetchBMCInfo } from "../services/bmcApi";
 import { fetchGitHubInfo } from "../services/githubApi";
 import { DialogBtn, UserAvatar, pulseAnimation, ring } from "../styles";
 import { ColorPalette } from "../theme/themeConfig";
@@ -57,9 +56,9 @@ export const ProfileSidebar = () => {
   const [lastUpdate, setLastUpdate] = useState<string | null>(null);
   const [issuesCount, setIssuesCount] = useState<number | null>(null);
 
-  const [bmcSupporters, setBmcSupporters] = useState<number | null>(null);
+  // const [bmcSupporters, setBmcSupporters] = useState<number | null>(null);
 
-  const theme = useTheme();
+  // const theme = useTheme();
   const n = useNavigate();
 
   useEffect(() => {
@@ -70,18 +69,18 @@ export const ProfileSidebar = () => {
       setIssuesCount(repoData.open_issues_count);
     };
 
-    const fetchBMC: () => Promise<void> = async () => {
-      // Fetch data from the Buy Me a Coffee API
-      const { supportersCount } = await fetchBMCInfo();
-      // In case BMC api fails
-      if (supportersCount > 0) {
-        setBmcSupporters(supportersCount);
-      } else {
-        console.error("No BMC supporters found.");
-      }
-    };
+    // const fetchBMC: () => Promise<void> = async () => {
+    //   // Fetch data from the Buy Me a Coffee API
+    //   const { supportersCount } = await fetchBMCInfo();
+    //   // In case BMC api fails
+    //   if (supportersCount > 0) {
+    //     setBmcSupporters(supportersCount);
+    //   } else {
+    //     console.error("No BMC supporters found.");
+    //   }
+    // };
 
-    fetchBMC();
+    // fetchBMC();
     fetchRepoInfo();
   }, []);
 
@@ -302,23 +301,6 @@ export const ProfileSidebar = () => {
             )}
           </StyledMenuItem>
         </MenuLink>
-
-        {/* <MenuLink to="https://www.buymeacoffee.com/maciekt07">
-          <StyledMenuItem className="bmcMenu">
-            <BmcIcon className="bmc-icon" src={theme.darkmode ? bmcLogoLight : bmcLogo} /> &nbsp;
-            Buy me a coffee{" "}
-            {bmcSupporters && (
-              <Tooltip title={`${bmcSupporters} supporters on Buy me a coffee`}>
-                <MenuLabel clr="#f93c58">
-                  <span style={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
-                    <FavoriteRounded style={{ fontSize: "16px" }} />
-                    &nbsp;{bmcSupporters}
-                  </span>
-                </MenuLabel>
-              </Tooltip>
-            )}
-          </StyledMenuItem>
-        </MenuLink> */}
 
         <StyledDivider />
 
