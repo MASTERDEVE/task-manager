@@ -304,7 +304,7 @@ export const ProfileSidebar = () => {
           </StyledMenuItem>
         </MenuLink>
 
-        <MenuLink to="https://www.buymeacoffee.com/maciekt07">
+        {/* <MenuLink to="https://www.buymeacoffee.com/maciekt07">
           <StyledMenuItem className="bmcMenu">
             <BmcIcon className="bmc-icon" src={theme.darkmode ? bmcLogoLight : bmcLogo} /> &nbsp;
             Buy me a coffee{" "}
@@ -319,7 +319,7 @@ export const ProfileSidebar = () => {
               </Tooltip>
             )}
           </StyledMenuItem>
-        </MenuLink>
+        </MenuLink> */}
 
         <StyledDivider />
 
