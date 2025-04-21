@@ -8,7 +8,7 @@ import {
   DeleteForeverRounded,
   DownloadDoneRounded,
   Favorite,
-  FavoriteRounded,
+ 
   FiberManualRecord,
   GetAppRounded,
   GitHub,
@@ -35,8 +35,7 @@ import {
 import React, { useContext, useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { CustomDialogTitle, LogoutDialog, SettingsDialog } from ".";
-import bmcLogoLight from "../assets/bmc-logo-light.svg";
-import bmcLogo from "../assets/bmc-logo.svg";
+
 import logo from "../assets/logo256.png";
 import { defaultUser } from "../constants/defaultUser";
 import { UserContext } from "../contexts/UserContext";
@@ -643,11 +642,11 @@ const LogoText = styled.h2`
   }
 `;
 
-const BmcIcon = styled.img`
-  width: 1em;
-  height: 1em;
-  font-size: 1.5rem;
-`;
+// const BmcIcon = styled.img`
+//   width: 1em;
+//   height: 1em;
+//   font-size: 1.5rem;
+// `;
 
 const ProfileOptionsBottom = styled.div`
   margin-top: auto;
