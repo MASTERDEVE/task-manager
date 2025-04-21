@@ -7,6 +7,9 @@ import manifest from "./manifest";
 
 // https://vitejs.dev/config/
 export default defineConfig({
+  build: {
+    outDir: "dist", // Ensure this matches the expected output directory for your deploy
+  },
   test: {
     globals: true,
   },
