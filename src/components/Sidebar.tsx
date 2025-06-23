@@ -2,22 +2,18 @@ import { keyframes } from "@emotion/react";
 import styled from "@emotion/styled";
 import {
   AddRounded,
-  AdjustRounded,
-  BugReportRounded,
   CategoryRounded,
   DeleteForeverRounded,
   DownloadDoneRounded,
   Favorite,
   FiberManualRecord,
   GetAppRounded,
-  GitHub,
   InstallDesktopRounded,
   InstallMobileRounded,
   IosShareRounded,
   Logout,
   PhoneIphoneRounded,
   SettingsRounded,
-  StarRounded,
   TaskAltRounded,
   ThumbUpRounded,
 } from "@mui/icons-material";
@@ -39,7 +35,7 @@ import logo from "../assets/logo256.png";
 import { defaultUser } from "../constants/defaultUser";
 import { UserContext } from "../contexts/UserContext";
 // import { fetchBMCInfo } from "../services/bmcApi";
-import { fetchGitHubInfo } from "../services/githubApi";
+
 import { DialogBtn, UserAvatar, pulseAnimation, ring } from "../styles";
 import { ColorPalette } from "../theme/themeConfig";
 import { getProfilePicture, showToast, systemInfo, timeAgo } from "../utils";
@@ -52,9 +48,7 @@ export const ProfileSidebar = () => {
   const [openLogoutDialog, setOpenLogoutDialog] = useState<boolean>(false);
   const [openSettings, setOpenSettings] = useState<boolean>(false);
 
-  const [stars, setStars] = useState<number | null>(null);
-  const [lastUpdate, setLastUpdate] = useState<string | null>(null);
-  const [issuesCount, setIssuesCount] = useState<number | null>(null);
+  const [lastUpdate] = useState<string | null>(null);
 
   // const [bmcSupporters, setBmcSupporters] = useState<number | null>(null);
 
@@ -62,12 +56,7 @@ export const ProfileSidebar = () => {
   const n = useNavigate();
 
   useEffect(() => {
-    const fetchRepoInfo: () => Promise<void> = async () => {
-      const { repoData, branchData } = await fetchGitHubInfo();
-      setStars(repoData.stargazers_count);
-      setLastUpdate(branchData.commit.commit.committer.date);
-      setIssuesCount(repoData.open_issues_count);
-    };
+    const fetchRepoInfo: () => Promise<void> = async () => {};
 
     // const fetchBMC: () => Promise<void> = async () => {
     //   // Fetch data from the Buy Me a Coffee API
@@ -268,39 +257,6 @@ export const ProfileSidebar = () => {
         </MenuLink>
 
         <StyledDivider />
-
-        <MenuLink to="https://https://github.com/MASTERDEVE/task-manager">
-          <StyledMenuItem translate="no">
-            <GitHub /> &nbsp; Github{" "}
-            {stars && (
-              <Tooltip title={`${stars} stars on Github`}>
-                <MenuLabel clr="#ff9d00">
-                  <span style={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
-                    <StarRounded style={{ fontSize: "18px" }} />
-                    &nbsp;{stars}
-                  </span>
-                </MenuLabel>
-              </Tooltip>
-            )}
-          </StyledMenuItem>
-        </MenuLink>
-
-        <MenuLink to="https://github.com/maciekt07/TodoApp/issues/new">
-          <StyledMenuItem>
-            <BugReportRounded /> &nbsp; Report Issue{" "}
-            {Boolean(issuesCount || issuesCount === 0) && (
-              <Tooltip title={`${issuesCount} open issues`}>
-                <MenuLabel clr="#3bb61c">
-                  <span style={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
-                    <AdjustRounded style={{ fontSize: "18px" }} />
-                    &nbsp;
-                    {issuesCount}
-                  </span>
-                </MenuLabel>
-              </Tooltip>
-            )}
-          </StyledMenuItem>
-        </MenuLink>
 
         <StyledDivider />
 
